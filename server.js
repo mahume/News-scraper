@@ -16,3 +16,11 @@ const MONGODB_URI =
   process.env.MONGODB_URI || 'mongodb://localhost/mongoHeadlines';
 
 mongoose.connect(MONGODB_URI);
+
+app.get('https://www.reddit.com/r/news/').then(function(res) {
+  const $ = cheerio.load(res.data);
+  const results = [];
+  $('h2').each(function(i, element) {
+    const text = $(element).text();
+  });
+});
