@@ -14,8 +14,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
-require('./routes/htmlRoutes')(app);
 require('./routes/apiRoutes')(app);
+require('./routes/htmlRoutes')(app);
 
 app.use((err, req, res, next) => {
   res.status(422).send({ error: err.message });
