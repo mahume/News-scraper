@@ -1,22 +1,30 @@
-<button id="scrapeBtn">Scrape</button>
-<button id="displayBtn">Display Results</button>
-
-<div>
-  <h1>Articles</h1>
-  {{#each data}}
-  <div>
-    <a href="{{ link }}">{{ title }}</a>
-    <p>{{ summary }}</p>
-    <p>{{ note }}</p>
-  </div>
-  <div>
-    <p>Notes</p>
-    <input type="text" id="{{ _id }}">
-    <button data-id="{{ _id }}" class="addNote">Add note</button>
-    <button class="deleteNote">Delete note</button>
-  </div>
-  {{/each}}
+<div class="container">
+  <header>
+    <h1 id="paper-title">Nodescraper Daily</h1>
+  </header>
+  <main>
+    <button id="scrapeBtn">Scrape</button>
+    <button id="displayBtn">Display Results</button>
+    <div>
+      {{#each data}}
+      <div>
+        <a href="{{ link }}">{{ title }}</a>
+        <p>{{ summary }}</p>
+        <p>{{ note }}</p>
+      </div>
+      <div>
+        <p>Notes</p>
+        <input type="text" id="{{ _id }}">
+        <button data-id="{{ _id }}" class="addNote">Add note</button>
+      </div>
+      {{/each}}
+    </div>
+  </main>
+  <footer>Footer</footer>
 </div>
+
+
+
 
 
 {{!-- jQuery --}}
