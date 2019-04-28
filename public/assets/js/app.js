@@ -1,18 +1,25 @@
 const scrapeBtn = $('#scrapeBtn');
+const displayBtn = $('#displayBtn');
 
 const API = {
   scrape() {
     return $.ajax({
-      headers: {
-        'Content-Type': 'application/json',
-      },
       type: 'GET',
-      url: 'api/article',
-      data: JSON.stringify(),
+      url: 'api/scrape',
+    });
+  },
+  display() {
+    return $.ajax({
+      type: 'GET',
+      url: 'api/articles',
     });
   },
 };
 
 $(scrapeBtn).on('click', () => {
   API.scrape();
+});
+
+$(displayBtn).on('click', () => {
+  API.display();
 });

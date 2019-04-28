@@ -1,6 +1,13 @@
-<button id="scrapeBtn">Scrape</button>
-<a id="displayBtn" href="/articles">Display Results</a>
-
+<div>
+  <h1>Articles</h1>
+  {{#each data}}
+  <ul>
+    <li>{{ title }}</li>
+    <li>{{ summary }}</li>
+    <li>{{ link }}</li>
+  </ul>
+  {{/each}}
+</div>
 
 {{!-- jQuery --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
