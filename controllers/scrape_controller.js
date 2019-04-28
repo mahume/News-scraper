@@ -6,9 +6,9 @@ module.exports = {
   scrape(req, res) {
     axios.get('https://www.smartbrief.com/industry/tech').then(res => {
       const $ = cheerio.load(res.data);
-      const results = [];
 
       $('div[class=multi-summary-wrapper]').each((i, element) => {
+        const results = [];
         const title = $(element)
           .children('.multi-summary-title')
           .text()
@@ -27,12 +27,14 @@ module.exports = {
           summary,
           link,
         });
+        Article.findOne({ title }).then(data => {
+          if (!data) {
+            Article.create(results)
+              .then(dbArticle => console.log(dbArticle))
+              .catch(err => console.log(err));
+          }
+        });
       });
-
-      Article.create(results)
-        .then(dbArticle => console.log(dbArticle))
-        .catch(err => console.log(err));
     });
-    res.send('Scrape Complete');
   },
 };

@@ -8,12 +8,6 @@ const API = {
       url: 'api/scrape',
     });
   },
-  display() {
-    return $.ajax({
-      type: 'GET',
-      url: 'api/articles',
-    });
-  },
 };
 
 $(scrapeBtn).on('click', () => {
@@ -21,5 +15,5 @@ $(scrapeBtn).on('click', () => {
 });
 
 $(displayBtn).on('click', () => {
-  API.display();
+  window.location.reload();
 });
