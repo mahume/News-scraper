@@ -1,17 +1,27 @@
 const scrapeBtn = $('#scrapeBtn');
 const displayBtn = $('#displayBtn');
 
-const API = {
-  scrape() {
-    return $.ajax({
-      type: 'GET',
-      url: 'api/scrape',
-    });
-  },
-};
+$(document).on('click', '.addNote', function() {
+  const thisId = $(this).attr('data-id');
+
+  $.ajax({
+    method: 'POST',
+    url: `/notes/${thisId}`,
+    data: {
+      note: $(`#${thisId}`).val(),
+    },
+  }).then(data => {
+    // console.log(data);
+    $(`#${thisId}`).empty();
+  });
+  $(`#${thisId}`).val('');
+});
 
 $(scrapeBtn).on('click', () => {
-  API.scrape();
+  $.ajax({
+    type: 'GET',
+    url: 'api/scrape',
+  });
 });
 
 $(displayBtn).on('click', () => {

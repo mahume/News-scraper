@@ -15,10 +15,10 @@ const ArticleSchema = new Schema({
     type: String,
     required: true,
   },
-  comments: [
+  note: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Comment',
+      ref: 'Note',
     },
   ],
 });

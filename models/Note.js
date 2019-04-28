@@ -2,17 +2,17 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const CommentSchema = new Schema({
-  user: {
+const NoteSchema = new Schema({
+  title: {
     type: String,
     required: true,
   },
-  comment: {
+  text: {
     type: String,
     required: true,
   },
 });
 
-const Comment = mongoose.model('Comment', CommentSchema);
+const Note = mongoose.model('Note', NoteSchema);
 
-module.exports = Comment;
+module.exports = Note;
